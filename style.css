@@ -1039,30 +1039,92 @@ footer {
    RESPONSIVE — Mobile breakpoint at 680px
    ========================================================================== */
 
-@media (max-width: 680px) {
-  /* Nav: hide links, show hamburger */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 66px; /* nav height + progress bar */
-    left: 0;
-    right: 0;
-    background-color: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
-    padding: 16px 24px 24px;
-    gap: 16px;
-  }
+/* ==========================================================================
+   MOBILE — max-width: 768px
+   Single breakpoint for all mobile overrides. Touch targets are at least 44px.
+   ========================================================================== */
 
-  .nav-links.open {
-    display: flex;
-  }
+@media (max-width: 768px) {
+
+  /* --- Nav: hamburger + slide-in drawer from the right ------------------- */
 
   #nav-hamburger {
     display: flex;
+    z-index: 110;
   }
 
-  /* Section padding */
+  /* Drawer: slides in from the right over the page content */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 72vw;
+    max-width: 300px;
+    background-color: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+    padding: 80px 32px 40px;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 105;
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 14px 0;  /* meets 44px touch target with font size */
+    font-size: 1rem;
+    border-bottom: none;
+  }
+
+  /* Scrim overlay behind the drawer */
+  #nav-scrim {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 104;
+  }
+
+  #nav-scrim.open {
+    display: block;
+  }
+
+  /* Hamburger icon → X when open */
+  #nav-hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #nav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  #nav-hamburger.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  #nav-hamburger span {
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  /* --- Typography --------------------------------------------------------- */
+
+  #hero h1 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  /* --- Section spacing ---------------------------------------------------- */
+
   section {
     padding: 48px 0;
   }
@@ -1071,7 +1133,60 @@ footer {
     padding: 64px 0;
   }
 
-  /* Footer */
+  /* --- Touch targets: min 44px for all interactive elements -------------- */
+
+  .accordion-header,
+  .answer-option,
+  .btn-primary,
+  .tab-btn,
+  #glossary-search,
+  #cert-name {
+    min-height: 44px;
+  }
+
+  .flashcard-controls button,
+  .flashcard-actions button,
+  #prev-card,
+  #next-card {
+    min-height: 44px;
+    padding: 10px 20px;
+  }
+
+  /* --- Flashcard ---------------------------------------------------------- */
+
+  .flashcard-scene {
+    height: 220px;
+  }
+
+  .cert-inner {
+    padding: 32px 20px 28px;
+  }
+
+  /* --- Course table: allow horizontal scroll on small screens ------------- */
+
+  .course-table-wrapper {
+    border-radius: 8px;
+  }
+
+  .course-table th,
+  .course-table td {
+    padding: 12px 14px;
+    font-size: 0.83rem;
+    white-space: nowrap;
+  }
+
+  /* --- Quiz --------------------------------------------------------------- */
+
+  .quiz-card {
+    padding: 24px 20px;
+  }
+
+  .quiz-card-progress-wrap {
+    margin: -24px -20px 20px;
+  }
+
+  /* --- Footer ------------------------------------------------------------- */
+
   .footer-inner {
     flex-direction: column;
     gap: 32px;
@@ -1080,4 +1195,5 @@ footer {
   .footer-meta {
     text-align: left;
   }
+
 }

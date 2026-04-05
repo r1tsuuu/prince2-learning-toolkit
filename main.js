@@ -5,6 +5,55 @@
    CSS variables in style.css handle all color changes when .dark is present.
    ========================================================================== */
 
+/* ==========================================================================
+   MOBILE NAV — Hamburger drawer
+   Toggles .open on the drawer, scrim, and hamburger button.
+   Closes on: scrim click, nav link click, Escape key.
+   ========================================================================== */
+
+const hamburger   = document.getElementById('nav-hamburger');
+const navDrawer   = document.querySelector('.nav-links');
+const navScrim    = document.getElementById('nav-scrim');
+
+function openNav() {
+  hamburger.classList.add('open');
+  navDrawer.classList.add('open');
+  navScrim.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden'; // prevent scroll behind drawer
+}
+
+function closeNav() {
+  hamburger.classList.remove('open');
+  navDrawer.classList.remove('open');
+  navScrim.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', function () {
+  hamburger.classList.contains('open') ? closeNav() : openNav();
+});
+
+navScrim.addEventListener('click', closeNav);
+
+// Close when a nav link is tapped (the page scrolls to the section)
+navDrawer.querySelectorAll('a').forEach(function (link) {
+  link.addEventListener('click', closeNav);
+});
+
+// Close on Escape key
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeNav();
+});
+
+/* ==========================================================================
+   DARK MODE
+   Theme is applied on <html> before body renders (inline script in <head>).
+   This listener handles user-initiated toggles and persists the preference.
+   CSS variables in style.css handle all color changes when .dark is present.
+   ========================================================================== */
+
 const darkToggle = document.getElementById('dark-mode-toggle');
 
 darkToggle.addEventListener('click', function () {
