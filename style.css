@@ -1,0 +1,64 @@
+/* ==========================================================================
+   CSS VARIABLES — Color System & Typography
+   All colors used anywhere in this file MUST reference these variables.
+   Never use hardcoded hex values outside of this section.
+   To add a new color: define it here first, then use the variable name.
+   ========================================================================== */
+
+:root {
+  /* Backgrounds */
+  --color-bg: #f5f4f0;
+  --color-surface: #ffffff;
+
+  /* Text */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #5a5a5a;
+
+  /* Accents */
+  --color-accent-blue: #2c5f8a;
+  --color-accent-rust: #b85c38;
+
+  /* Borders */
+  --color-border: #dcdbd7;
+
+  /* Typography */
+  --font-heading: 'Lora', serif;
+}
+
+/* Dark mode overrides — applied when <body class="dark"> */
+body.dark {
+  --color-bg: #1a1a1a;
+  --color-surface: #252525;
+  --color-text-primary: #f0efeb;
+  --color-text-secondary: #a0a09a;
+  --color-accent-blue: #5b9ecf;
+  --color-accent-rust: #d47a58;
+  --color-border: #3a3a3a;
+}
+
+/* ==========================================================================
+   BASE — Reset & Global Typography
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
