@@ -21,7 +21,6 @@
     <header>
       <nav id="navbar">
         <a href="#hero" class="nav-logo">PRINCE2 Toolkit</a>
-        <button id="dark-mode-toggle" aria-label="Toggle dark mode">Dark Mode</button>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#modules">Modules</a></li>
@@ -31,6 +30,19 @@
           <li><a href="#quiz">Quiz</a></li>
           <li><a href="#resources">Resources</a></li>
         </ul>
+        <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+          <!-- Sun icon (light mode) -->
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <!-- Moon icon (dark mode) -->
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
     </header>
 
@@ -43,8 +55,8 @@
            HERO
       =================================================================== -->
       <section id="hero">
-        <h1>PRINCE2 Learning Toolkit</h1>
-        <p>A free, self-paced resource for DISCS students covering the PRINCE2 project management framework. Work through the modules, test yourself with the quiz, and earn your completion certificate.</p>
+        <h1>Learn PRINCE2.<br>One module at a time.</h1>
+        <p class="hero-sub">A free learning toolkit for DISCS students.</p>
         <a href="#modules" class="btn-primary">Start Learning</a>
       </section>
 
@@ -269,8 +281,28 @@
          FOOTER
     ====================================================================== -->
     <footer id="footer">
-      <p>PRINCE2 Learning Toolkit — DISCS Module 3</p>
-      <p>Built by CSYN &middot; <a href="#hero">Back to top</a></p>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <p class="footer-title">PRINCE2 Learning Toolkit</p>
+          <p>A free study resource for DISCS Module 3.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#about">About</a>
+          <a href="#modules">Modules</a>
+          <a href="#glossary">Glossary</a>
+          <a href="#flashcards">Flashcards</a>
+          <a href="#quiz">Quiz</a>
+          <a href="#resources">Resources</a>
+        </nav>
+        <div class="footer-meta">
+          <p>Built by CSYN</p>
+          <p>Bettina Asuncion &middot; Neil Aldous Biason &middot; Juan Paolo Gines &middot; Christian Naguio &middot; Jedale Sabio</p>
+          <p>DISCS Module 3 &middot; 2025</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <a href="#hero">Back to top &uarr;</a>
+      </div>
     </footer>
 
     <script src="main.js"></script>

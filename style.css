@@ -48,9 +48,14 @@ body.dark {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
+  line-height: 1.75;
   background-color: var(--color-bg);
   color: var(--color-text-primary);
 }
@@ -61,4 +66,341 @@ h3 {
   font-family: var(--font-heading);
   font-weight: 600;
   color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+a {
+  color: var(--color-accent-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   READING PROGRESS BAR
+   Fixed at the very top of the viewport, above the nav.
+   Width is driven by main.js as the user scrolls.
+   ========================================================================== */
+
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background-color: var(--color-accent-blue);
+  z-index: 200;
+  transition: width 0.1s linear;
+}
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+
+header {
+  position: sticky;
+  top: 4px; /* sits just below the progress bar */
+  z-index: 100;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+  padding: 0 24px;
+  background-color: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--color-text-primary);
+}
+
+/* Active link — JS adds this class to the link matching the section in view */
+.nav-links a.active {
+  color: var(--color-accent-blue);
+  border-bottom: 2px solid var(--color-accent-blue);
+}
+
+/* Dark mode toggle */
+#dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+#dark-mode-toggle:hover {
+  border-color: var(--color-accent-blue);
+  color: var(--color-accent-blue);
+}
+
+/* Show sun in dark mode, moon in light mode */
+.icon-moon { display: block; }
+.icon-sun  { display: none;  }
+body.dark .icon-moon { display: none;  }
+body.dark .icon-sun  { display: block; }
+
+/* Hamburger button — hidden on desktop, shown on mobile */
+#nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+#nav-hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-text-primary);
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
+/* ==========================================================================
+   LAYOUT — Main content wrapper & section spacing
+   ========================================================================== */
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 80px 0;
+}
+
+section + section {
+  border-top: 1px solid var(--color-border);
+}
+
+section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+}
+
+section > p:first-of-type {
+  color: var(--color-text-secondary);
+  margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-accent-blue);
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.88;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 96px 0;
+  border-top: none;
+}
+
+#hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 36px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 32px;
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 180px;
+}
+
+.footer-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+}
+
+.footer-brand p:not(.footer-title),
+.footer-meta p {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-nav a {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+  color: var(--color-accent-blue);
+}
+
+.footer-meta {
+  flex: 1;
+  min-width: 180px;
+  text-align: right;
+}
+
+.footer-bottom {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  border-top: 1px solid var(--color-border);
+  text-align: right;
+}
+
+.footer-bottom a {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-accent-blue);
+}
+
+/* ==========================================================================
+   RESPONSIVE — Mobile breakpoint at 680px
+   ========================================================================== */
+
+@media (max-width: 680px) {
+  /* Nav: hide links, show hamburger */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 66px; /* nav height + progress bar */
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px 24px 24px;
+    gap: 16px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  #nav-hamburger {
+    display: flex;
+  }
+
+  /* Section padding */
+  section {
+    padding: 48px 0;
+  }
+
+  #hero {
+    padding: 64px 0;
+  }
+
+  /* Footer */
+  .footer-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer-meta {
+    text-align: left;
+  }
 }
