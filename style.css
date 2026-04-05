@@ -967,28 +967,28 @@ footer {
 .footer-inner {
   max-width: 760px;
   margin: 0 auto;
-  padding: 48px 24px 32px;
+  padding: 64px 24px 52px;
   display: flex;
-  gap: 48px;
+  gap: 64px;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .footer-brand {
-  flex: 1;
-  min-width: 180px;
+  flex: 2;
+  min-width: 200px;
 }
 
 .footer-title {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--color-text-primary);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
-.footer-brand p:not(.footer-title),
-.footer-meta p {
-  font-size: 0.82rem;
+.footer-brand p:not(.footer-title) {
+  font-size: 0.85rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
 }
@@ -996,11 +996,11 @@ footer {
 .footer-nav {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .footer-nav a {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color 0.2s;
@@ -1012,22 +1012,52 @@ footer {
 
 .footer-meta {
   flex: 1;
-  min-width: 180px;
-  text-align: right;
+  min-width: 160px;
+}
+
+.footer-meta-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.footer-members {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-members li {
+  font-size: 0.83rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
 }
 
 .footer-bottom {
   max-width: 760px;
   margin: 0 auto;
-  padding: 16px 24px;
+  padding: 20px 24px;
   border-top: 1px solid var(--color-border);
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-bottom span {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
 }
 
 .footer-bottom a {
   font-size: 0.82rem;
   color: var(--color-text-secondary);
   text-decoration: none;
+  white-space: nowrap;
   transition: color 0.2s;
 }
 
