@@ -176,32 +176,71 @@
 
       <!-- ==================================================================
            RECOMMENDED COURSES
+           Replace all placeholder values with your actual evaluation data.
       =================================================================== -->
       <section id="courses">
         <h2>Recommended Courses</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Side-by-side comparison of two evaluated online courses.</p>
-        <div class="courses-grid">
-          <article class="course-card">
-            <h3>Course One</h3>
-            <p class="course-provider">Provider name</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-            <ul>
-              <li>Pro: Lorem ipsum</li>
-              <li>Pro: Dolor sit amet</li>
-              <li>Con: Consectetur adipiscing</li>
-            </ul>
-            <span class="badge">Recommended</span>
-          </article>
-          <article class="course-card">
-            <h3>Course Two</h3>
-            <p class="course-provider">Provider name</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate.</p>
-            <ul>
-              <li>Pro: Lorem ipsum</li>
-              <li>Con: Dolor sit amet</li>
-              <li>Con: Consectetur adipiscing</li>
-            </ul>
-          </article>
+        <p>Side-by-side comparison of two online PRINCE2 courses evaluated for this module. Both cover Foundation-level content; see below for how they differ.</p>
+
+        <div class="course-table-wrapper">
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th>Criteria</th>
+                <th>
+                  [Course Name A]
+                  <span class="badge-recommended">Recommended</span>
+                  <a href="#" class="course-link" target="_blank" rel="noopener">View course →</a>
+                </th>
+                <th>
+                  [Course Name B]
+                  <a href="#" class="course-link" target="_blank" rel="noopener">View course →</a>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Platform</td>
+                <td>[e.g. Udemy]</td>
+                <td>[e.g. Coursera]</td>
+              </tr>
+              <tr>
+                <td>Cost</td>
+                <td>[e.g. ~₱500 on sale]</td>
+                <td>[e.g. Free to audit]</td>
+              </tr>
+              <tr>
+                <td>Duration</td>
+                <td>[e.g. 6 hours]</td>
+                <td>[e.g. 10 hours]</td>
+              </tr>
+              <tr>
+                <td>Format</td>
+                <td>[e.g. Video + quizzes]</td>
+                <td>[e.g. Video + readings]</td>
+              </tr>
+              <tr>
+                <td>Certificate on Completion</td>
+                <td>[e.g. Yes — paid]</td>
+                <td>[e.g. Yes — with subscription]</td>
+              </tr>
+              <tr>
+                <td>PRINCE2 Coverage Depth</td>
+                <td>[e.g. All 7 themes + 7 principles]</td>
+                <td>[e.g. Overview only]</td>
+              </tr>
+              <tr>
+                <td>Beginner Friendly</td>
+                <td>[e.g. Yes — no prerequisites]</td>
+                <td>[e.g. Some IT background assumed]</td>
+              </tr>
+              <tr>
+                <td>Overall Rating</td>
+                <td><span class="stars">★★★★★</span> 5 / 5</td>
+                <td><span class="stars">★★★☆☆</span> 3 / 5</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -210,27 +249,32 @@
       =================================================================== -->
       <section id="flashcards">
         <h2>Flashcards</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Click a card to reveal the definition. Use the controls to shuffle or restart the deck.</p>
-        <div class="flashcard-controls">
-          <button id="shuffle-btn">Shuffle</button>
-          <button id="restart-btn">Restart</button>
-          <span id="card-counter">Card 1 of 10</span>
-        </div>
-        <div class="flashcard-deck">
-          <div class="flashcard" id="flashcard">
-            <div class="flashcard-inner">
-              <div class="flashcard-front">
-                <p>Term placeholder</p>
-              </div>
-              <div class="flashcard-back">
-                <p>Definition placeholder — lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
+        <p>Click a card to flip it and reveal the definition. Use the buttons to move through the deck, shuffle, or start over.</p>
+
+        <!-- 3D flip card — JS targets #flashcard, .card-term, .card-def, .flip-hint -->
+        <div class="flashcard-scene">
+          <div class="flashcard" id="flashcard" role="button" tabindex="0" aria-label="Flip card to see definition">
+            <div class="flashcard-face flashcard-front">
+              <p class="flip-hint">Click to flip</p>
+              <p class="card-term"></p>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p class="card-def"></p>
             </div>
           </div>
         </div>
-        <div class="flashcard-nav">
-          <button id="prev-card">← Previous</button>
+
+        <!-- Prev / counter / Next -->
+        <div class="flashcard-controls">
+          <button id="prev-card">← Prev</button>
+          <span id="card-counter">1 / 15</span>
           <button id="next-card">Next →</button>
+        </div>
+
+        <!-- Shuffle and Restart -->
+        <div class="flashcard-actions">
+          <button id="shuffle-btn">Shuffle deck</button>
+          <button id="restart-btn">Restart</button>
         </div>
       </section>
 
@@ -239,36 +283,45 @@
       =================================================================== -->
       <section id="quiz">
         <h2>Quiz</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Test your knowledge of PRINCE2 with multiple choice questions.</p>
+        <p>Test your PRINCE2 knowledge with 12 multiple choice questions. Score 70% or above to unlock your certificate of completion.</p>
 
-        <!-- Quiz intro -->
-        <div id="quiz-intro">
-          <p>Last score: <span id="last-score">—</span></p>
-          <button id="start-quiz-btn">Start Quiz</button>
+        <!-- Intro screen -->
+        <div id="quiz-intro" class="quiz-card">
+          <p class="quiz-intro-meta">12 questions &middot; Multiple choice &middot; No time limit</p>
+          <p id="last-score-line" hidden>Previous best: <strong id="last-score"></strong></p>
+          <button id="start-quiz-btn" class="btn-primary">Start Quiz</button>
         </div>
 
         <!-- Quiz in progress -->
-        <div id="quiz-body" hidden>
-          <div id="quiz-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-          <p id="question-counter">Question 1 of 10</p>
-          <p id="question-text">Question placeholder?</p>
-          <div id="answer-options" role="list"></div>
-          <button id="next-question-btn" hidden>Next Question</button>
+        <div id="quiz-body" class="quiz-card" hidden>
+          <div class="quiz-card-progress-wrap">
+            <div id="quiz-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p id="question-counter" class="question-counter">Question 1 of 12</p>
+          <p id="question-text" class="question-text"></p>
+          <div id="answer-options" class="answer-options"></div>
         </div>
 
-        <!-- Quiz results -->
-        <div id="quiz-results" hidden>
-          <h3>Your Results</h3>
-          <p id="score-summary">You scored X out of Y.</p>
-          <button id="retry-btn">Try Again</button>
+        <!-- Results screen -->
+        <div id="quiz-results" class="quiz-card" hidden>
+          <div class="results-score">
+            <span id="score-fraction">0 / 12</span>
+            <span id="score-percent">0%</span>
+          </div>
+          <p id="score-message" class="score-message"></p>
+          <p id="prev-best-line" hidden>Previous best: <strong id="prev-best-value"></strong></p>
+          <div class="results-actions">
+            <button id="retry-btn" class="btn-primary">Try Again</button>
+          </div>
 
-          <!-- Certificate — shown on high score -->
+          <!-- Certificate — revealed when score >= 70% -->
           <div id="certificate" hidden>
             <h3>Certificate of Completion</h3>
-            <p>This certifies that</p>
-            <input type="text" id="cert-name" placeholder="Enter your name" aria-label="Your name for the certificate" />
-            <p>has successfully completed the PRINCE2 Learning Toolkit.</p>
-            <button id="print-cert-btn">Print / Save</button>
+            <p class="cert-body">This certifies that</p>
+            <input type="text" id="cert-name" placeholder="Enter your full name" aria-label="Your name for the certificate" />
+            <p class="cert-body">has successfully completed the PRINCE2 Learning Toolkit<br>with a score of <strong id="cert-score"></strong>.</p>
+            <p class="cert-meta">DISCS Module 3 &middot; CSYN &middot; 2025</p>
+            <button id="print-cert-btn" class="btn-primary">Print / Save as PDF</button>
           </div>
         </div>
       </section>

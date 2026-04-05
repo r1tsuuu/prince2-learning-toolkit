@@ -103,3 +103,138 @@ glossarySearch.addEventListener('input', function () {
 
   glossaryNoResults.hidden = visibleCount > 0;
 });
+
+/* ==========================================================================
+   FLASHCARDS
+   Deck is an array of { term, definition } objects defined here.
+   Fisher-Yates shuffle randomizes a copy; Restart restores the original order.
+   The flip-hint disappears permanently after the first card is flipped.
+   ========================================================================== */
+
+const flashcardData = [
+  {
+    term: 'Business Case',
+    definition: 'Justification for undertaking a project, based on estimated costs, risks, and expected benefits. Owned by the Executive throughout the project.'
+  },
+  {
+    term: 'Executive',
+    definition: 'The single individual with overall responsibility for the project, accountable to corporate or programme management. Chairs the Project Board.'
+  },
+  {
+    term: 'Project Board',
+    definition: 'The body accountable for the overall direction and management of the project. Comprises the Executive, Senior User, and Senior Supplier.'
+  },
+  {
+    term: 'Tolerance',
+    definition: 'The permissible deviation above and below a plan\'s target for time, cost, quality, scope, risk, or benefit before the deviation must be escalated to the next management level.'
+  },
+  {
+    term: 'Work Package',
+    definition: 'An assignment given by the Project Manager to a Team Manager describing the work to be done, quality requirements, constraints, and reporting expectations.'
+  },
+  {
+    term: 'Risk Register',
+    definition: 'A record of identified risks relating to the project, including their status, probability, impact, and the responses planned to manage them.'
+  },
+  {
+    term: 'Highlight Report',
+    definition: 'A time-driven report from the Project Manager to the Project Board summarising stage progress and any forecast deviations from the Stage Plan.'
+  },
+  {
+    term: 'Checkpoint Report',
+    definition: 'A progress report prepared by a Team Manager for the Project Manager covering the current status of a Work Package.'
+  },
+  {
+    term: 'Exception Report',
+    definition: 'A report describing a forecast deviation beyond agreed tolerances, its cause, impact, options, and a recommended course of action. Triggers an Exception Plan.'
+  },
+  {
+    term: 'Product Description',
+    definition: 'A document defining a product\'s purpose, composition, format, quality criteria, and the skills required to create and review it.'
+  },
+  {
+    term: 'Stage Plan',
+    definition: 'A detailed plan for the current management stage, created near the end of the previous stage. Used by the Project Manager to control day-to-day work.'
+  },
+  {
+    term: 'Benefits Review Plan',
+    definition: 'A plan defining how and when the achievement of the project\'s expected benefits will be measured. Maintained by the Executive.'
+  },
+  {
+    term: 'Change Authority',
+    definition: 'A person or group delegated authority by the Project Board to approve changes to the project within defined limits, avoiding bottlenecks at Board level.'
+  },
+  {
+    term: 'Lessons Log',
+    definition: 'An informal repository for lessons learned during the project, recording both positive experiences and problems so they can be shared with future projects.'
+  },
+  {
+    term: 'Project Initiation Document (PID)',
+    definition: 'The primary contract between the Project Manager and the Project Board. Brings together the Business Case, approach, plans, controls, and team structure to form the basis for project governance.'
+  }
+];
+
+let deck = flashcardData.slice();
+let currentIndex = 0;
+let hasFlipped = false;
+
+const flashcard = document.getElementById('flashcard');
+const cardCounter = document.getElementById('card-counter');
+const flipHint = flashcard.querySelector('.flip-hint');
+const cardTerm = flashcard.querySelector('.card-term');
+const cardDef = flashcard.querySelector('.card-def');
+
+function renderCard() {
+  const card = deck[currentIndex];
+  cardTerm.textContent = card.term;
+  cardDef.textContent = card.definition;
+  flashcard.classList.remove('flipped');
+  cardCounter.textContent = (currentIndex + 1) + ' / ' + deck.length;
+}
+
+// Flip on click or Enter/Space keypress
+flashcard.addEventListener('click', function () {
+  flashcard.classList.toggle('flipped');
+  if (!hasFlipped) {
+    hasFlipped = true;
+    flipHint.classList.add('hidden');
+  }
+});
+
+flashcard.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    flashcard.click();
+  }
+});
+
+document.getElementById('next-card').addEventListener('click', function () {
+  currentIndex = (currentIndex + 1) % deck.length;
+  renderCard();
+});
+
+document.getElementById('prev-card').addEventListener('click', function () {
+  currentIndex = (currentIndex - 1 + deck.length) % deck.length;
+  renderCard();
+});
+
+// Fisher-Yates shuffle
+document.getElementById('shuffle-btn').addEventListener('click', function () {
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = deck[i];
+    deck[i] = deck[j];
+    deck[j] = temp;
+  }
+  currentIndex = 0;
+  renderCard();
+});
+
+// Restart restores original order
+document.getElementById('restart-btn').addEventListener('click', function () {
+  deck = flashcardData.slice();
+  currentIndex = 0;
+  renderCard();
+});
+
+renderCard();
