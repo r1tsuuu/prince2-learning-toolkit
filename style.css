@@ -935,22 +935,64 @@ section > p:first-of-type {
    ========================================================================== */
 
 @media print {
-  /* Hide the entire page */
-  body * {
-    visibility: hidden;
+  @page {
+    size: A4;
+    margin: 12mm;
   }
 
-  /* Show only the certificate card */
-  #cert-card,
-  #cert-card * {
-    visibility: visible;
+  /*
+   * Use display:none (not visibility:hidden) so hidden elements take up
+   * zero space and the browser generates exactly one page.
+   */
+
+  /* 1 — Hide all direct body children */
+  body > * {
+    display: none !important;
   }
 
+  /* 2 — Unhide the path down to the cert card */
+  body > main                      { display: block  !important; }
+  body > main > *                  { display: none   !important; }
+  body > main > #quiz              { display: block  !important; }
+  #quiz > *                        { display: none   !important; }
+  #quiz-results                    { display: block  !important; }
+  #quiz-results > *                { display: none   !important; }
+  #certificate                     { display: block  !important; }
+
+  /* 3 — Strip all spacing from the wrapper chain */
+  main, #quiz, #quiz-results, #certificate {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  /* 4 — Hide the name prompt and print button (not part of the printable cert) */
+  .cert-name-prompt,
+  .cert-actions {
+    display: none !important;
+  }
+
+  /* 5 — Certificate card: fills the available page area, no page break inside */
   #cert-card {
-    position: fixed;
-    inset: 0;
-    margin: 24px;
-    border-radius: 4px;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border: 2px solid #b85c38 !important;
+    padding: 6px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cert-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 220mm !important;
+    padding: 20mm 24mm !important;
+    border: 1px solid #b85c38 !important;
+    gap: 10px !important;
   }
 }
 
