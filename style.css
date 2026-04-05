@@ -278,6 +278,124 @@ section > p:first-of-type {
 }
 
 /* ==========================================================================
+   ACCORDION — Learning Modules
+   Expand/collapse is driven by max-height transition.
+   JS toggles .open on .accordion-item; no height calculation needed in JS.
+   ========================================================================== */
+
+.accordion {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.accordion-item + .accordion-item {
+  border-top: 1px solid var(--color-border);
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  text-align: left;
+  transition: background-color 0.15s;
+}
+
+.accordion-header:hover {
+  background-color: var(--color-border);
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  transition: transform 0.3s ease;
+}
+
+.accordion-item.open .chevron {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.accordion-item.open .accordion-content {
+  max-height: 1000px;
+}
+
+.accordion-body {
+  padding: 4px 20px 24px;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   GLOSSARY
+   ========================================================================== */
+
+#glossary-search {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#glossary-search:focus {
+  border-color: var(--color-accent-blue);
+}
+
+#glossary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.glossary-item {
+  padding: 16px 20px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.glossary-item dt {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.glossary-item dd {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-left: 0;
+}
+
+#glossary-no-results {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  padding: 12px 0;
+}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 

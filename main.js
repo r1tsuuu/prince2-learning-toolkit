@@ -54,3 +54,52 @@ const sectionObserver = new IntersectionObserver(function (entries) {
 document.querySelectorAll('main section[id]').forEach(function (section) {
   sectionObserver.observe(section);
 });
+
+/* ==========================================================================
+   ACCORDION — Learning Modules
+   One item open at a time. Clicking an open item closes it.
+   CSS max-height transition handles the animation — no JS animation needed.
+   ========================================================================== */
+
+document.querySelectorAll('.accordion-header').forEach(function (header) {
+  header.addEventListener('click', function () {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains('open');
+
+    // Close all items
+    document.querySelectorAll('.accordion-item').forEach(function (el) {
+      el.classList.remove('open');
+      el.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+    });
+
+    // Open the clicked item if it was not already open
+    if (!isOpen) {
+      item.classList.add('open');
+      header.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+/* ==========================================================================
+   GLOSSARY — Live Search
+   Filters .glossary-item elements by their <dt> text on each keystroke.
+   Shows a "no results" message when nothing matches.
+   ========================================================================== */
+
+const glossarySearch = document.getElementById('glossary-search');
+const glossaryItems = document.querySelectorAll('.glossary-item');
+const glossaryNoResults = document.getElementById('glossary-no-results');
+
+glossarySearch.addEventListener('input', function () {
+  const query = glossarySearch.value.toLowerCase().trim();
+  let visibleCount = 0;
+
+  glossaryItems.forEach(function (item) {
+    const term = item.querySelector('dt').textContent.toLowerCase();
+    const matches = term.includes(query);
+    item.style.display = matches ? '' : 'none';
+    if (matches) visibleCount++;
+  });
+
+  glossaryNoResults.hidden = visibleCount > 0;
+});
