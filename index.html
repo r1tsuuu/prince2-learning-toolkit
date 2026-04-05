@@ -316,12 +316,49 @@
 
           <!-- Certificate — revealed when score >= 70% -->
           <div id="certificate" hidden>
-            <h3>Certificate of Completion</h3>
-            <p class="cert-body">This certifies that</p>
-            <input type="text" id="cert-name" placeholder="Enter your full name" aria-label="Your name for the certificate" />
-            <p class="cert-body">has successfully completed the PRINCE2 Learning Toolkit<br>with a score of <strong id="cert-score"></strong>.</p>
-            <p class="cert-meta">DISCS Module 3 &middot; CSYN &middot; 2025</p>
-            <button id="print-cert-btn" class="btn-primary">Print / Save as PDF</button>
+
+            <!-- Name prompt — hidden from print, sits above the card -->
+            <div class="cert-name-prompt">
+              <label for="cert-name">Enter your name to personalise your certificate:</label>
+              <input
+                type="text"
+                id="cert-name"
+                placeholder="Your full name"
+                aria-label="Your name for the certificate"
+                autocomplete="name"
+              />
+            </div>
+
+            <!-- The printable certificate card -->
+            <div class="cert-card" id="cert-card">
+              <div class="cert-inner">
+
+                <div class="cert-badge" aria-hidden="true">
+                  <!-- Award ribbon icon in --color-accent-rust -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                  </svg>
+                </div>
+
+                <p class="cert-eyebrow">Certificate of Completion</p>
+                <p class="cert-presented-to">This certifies that</p>
+                <p class="cert-student-name" id="cert-student-name">Your Name</p>
+                <p class="cert-description">has successfully completed the</p>
+                <p class="cert-course-title">PRINCE2 Learning Toolkit</p>
+                <p class="cert-score-line">Score: <span id="cert-score"></span></p>
+
+                <div class="cert-rule" aria-hidden="true"></div>
+
+                <p class="cert-footer-meta">DISCS Module 3 &middot; CSYN &middot; <span id="cert-date"></span></p>
+
+              </div>
+            </div>
+
+            <div class="cert-actions">
+              <button id="print-cert-btn" class="btn-primary">Print / Save as PDF</button>
+            </div>
+
           </div>
         </div>
       </section>

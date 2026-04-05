@@ -774,28 +774,31 @@ section > p:first-of-type {
 /* Certificate */
 #certificate {
   border-top: 1px solid var(--color-border);
-  padding-top: 32px;
+  padding-top: 36px;
+}
+
+/* Name prompt — visible on screen, hidden at print */
+.cert-name-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
   text-align: center;
 }
 
-#certificate h3 {
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-}
-
-.cert-body {
+.cert-name-prompt label {
+  font-size: 0.88rem;
   color: var(--color-text-secondary);
-  margin-bottom: 8px;
 }
 
 #cert-name {
   display: block;
   width: 100%;
   max-width: 320px;
-  margin: 8px auto 16px;
   padding: 10px 14px;
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   text-align: center;
   color: var(--color-text-primary);
   background-color: var(--color-bg);
@@ -809,11 +812,146 @@ section > p:first-of-type {
   border-color: var(--color-accent-blue);
 }
 
-.cert-meta {
-  font-size: 0.8rem;
+/* Certificate card — the printable visual */
+.cert-card {
+  border: 2px solid var(--color-accent-rust);
+  border-radius: 4px;
+  padding: 6px;
+  background-color: var(--color-surface);
+  margin-bottom: 24px;
+}
+
+.cert-inner {
+  border: 1px solid var(--color-accent-rust);
+  border-radius: 2px;
+  padding: 48px 40px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cert-badge {
+  color: var(--color-accent-rust);
+  margin-bottom: 6px;
+  line-height: 0;
+}
+
+.cert-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-rust);
+}
+
+.cert-presented-to {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
   color: var(--color-text-secondary);
-  letter-spacing: 0.05em;
-  margin: 16px 0 24px;
+  margin-top: 6px;
+}
+
+.cert-student-name {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  min-height: 2.5rem; /* reserves space before the user types */
+  word-break: break-word;
+}
+
+.cert-description {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+}
+
+.cert-course-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.cert-score-line {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.cert-rule {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-accent-rust);
+  margin: 8px auto 2px;
+  opacity: 0.5;
+}
+
+.cert-footer-meta {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.08em;
+}
+
+.cert-actions {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+/* ==========================================================================
+   SECTION REVEAL ANIMATIONS
+   Elements start invisible and translated down. The .visible class transitions
+   them into place. Stagger delays are set inline by JS via --reveal-delay.
+   Entire block is wrapped in prefers-reduced-motion so users who opt out
+   of motion see content at full opacity from the start with no delay.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 400ms ease, transform 400ms ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   Everything is hidden except #cert-card. The card is repositioned to fill
+   the page. The name prompt and print button are not printed.
+   ========================================================================== */
+
+@media print {
+  /* Hide the entire page */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only the certificate card */
+  #cert-card,
+  #cert-card * {
+    visibility: visible;
+  }
+
+  #cert-card {
+    position: fixed;
+    inset: 0;
+    margin: 24px;
+    border-radius: 4px;
+  }
 }
 
 /* ==========================================================================

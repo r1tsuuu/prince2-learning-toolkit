@@ -56,6 +56,62 @@ document.querySelectorAll('main section[id]').forEach(function (section) {
 });
 
 /* ==========================================================================
+   SECTION REVEAL ANIMATIONS
+   One IntersectionObserver handles both section headings and staggered cards.
+   Elements get the .reveal class here so that content is visible without JS.
+   Once .visible is added, the CSS transition plays. Unobserved after trigger.
+   ========================================================================== */
+
+// Elements to reveal as single units (sections, quiz cards, resource blocks)
+const revealSingles = document.querySelectorAll(
+  'main section, .quiz-card, .resource-block, .about-block'
+);
+
+// Elements whose children should stagger (glossary items, course table rows,
+// accordion items, flashcard controls)
+const staggerParents = {
+  '.accordion':         '.accordion-item',
+  '.course-table tbody': 'tr',
+  '#glossary-list':     '.glossary-item',
+  '.flashcard-scene, .flashcard-controls, .flashcard-actions': null
+};
+
+const revealObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    revealObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.15 });
+
+// Mark and observe single-reveal elements
+revealSingles.forEach(function (el) {
+  el.classList.add('reveal');
+  revealObserver.observe(el);
+});
+
+// Mark and observe staggered children
+[
+  { parent: '.accordion',          child: '.accordion-item' },
+  { parent: '.course-table tbody', child: 'tr'              },
+  { parent: '#glossary-list',      child: '.glossary-item'  },
+  { parent: '.flashcard-scene',    child: null              }
+].forEach(function (group) {
+  const parentEl = document.querySelector(group.parent);
+  if (!parentEl) return;
+
+  const children = group.child
+    ? parentEl.querySelectorAll(group.child)
+    : [parentEl];
+
+  children.forEach(function (child, i) {
+    child.classList.add('reveal');
+    child.style.setProperty('--reveal-delay', (i * 60) + 'ms');
+    revealObserver.observe(child);
+  });
+});
+
+/* ==========================================================================
    ACCORDION — Learning Modules
    One item open at a time. Clicking an open item closes it.
    CSS max-height transition handles the animation — no JS animation needed.

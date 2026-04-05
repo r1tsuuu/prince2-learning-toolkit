@@ -127,9 +127,12 @@ const prevBestLine    = document.getElementById('prev-best-line');
 const prevBestValue   = document.getElementById('prev-best-value');
 const lastScoreLine   = document.getElementById('last-score-line');
 const lastScoreEl     = document.getElementById('last-score');
-const certificate     = document.getElementById('certificate');
-const certScore       = document.getElementById('cert-score');
-const printCertBtn    = document.getElementById('print-cert-btn');
+const certificate       = document.getElementById('certificate');
+const certScore         = document.getElementById('cert-score');
+const certStudentName   = document.getElementById('cert-student-name');
+const certDateEl        = document.getElementById('cert-date');
+const certNameInput     = document.getElementById('cert-name');
+const printCertBtn      = document.getElementById('print-cert-btn');
 
 /* --------------------------------------------------------------------------
    State
@@ -267,6 +270,14 @@ function showResults() {
   if (pct >= PASS_THRESHOLD) {
     certificate.hidden = false;
     certScore.textContent = fracStr + ' (' + pctStr + ')';
+    // Set today's date on the certificate
+    certDateEl.textContent = new Date().toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+    // Reset name input and preview in case this is a retry
+    certNameInput.value = '';
+    certStudentName.textContent = 'Your Name';
+    certNameInput.focus();
   } else {
     certificate.hidden = true;
   }
@@ -303,6 +314,21 @@ function startQuiz() {
 startBtn.addEventListener('click', startQuiz);
 retryBtn.addEventListener('click', startQuiz);
 
+// Live name preview — updates the certificate as the user types
+certNameInput.addEventListener('input', function () {
+  const name = certNameInput.value.trim();
+  certStudentName.textContent = name.length > 0 ? name : 'Your Name';
+});
+
 printCertBtn.addEventListener('click', function () {
+  // If name is still the placeholder, nudge the user before printing
+  if (certNameInput.value.trim().length === 0) {
+    certNameInput.focus();
+    certNameInput.style.borderColor = 'var(--color-accent-rust)';
+    setTimeout(function () {
+      certNameInput.style.borderColor = '';
+    }, 1800);
+    return;
+  }
   window.print();
 });
