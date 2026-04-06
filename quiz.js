@@ -1,16 +1,3 @@
-/* ==========================================================================
-   QUIZ ENGINE
-   Self-contained module. All quiz state lives here; nothing is shared with main.js.
-
-   Data structure:  { question: string, options: string[4], correctIndex: number }
-   Passing threshold: 70%
-   Flow: intro → questions (one at a time, auto-advance) → results → certificate
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   Quiz data — 12 real PRINCE2 Foundation questions
-   -------------------------------------------------------------------------- */
-
 const quizData = [
   {
     question: 'How many principles does PRINCE2 define?',
