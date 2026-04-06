@@ -1,445 +1,763 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PRINCE2 Learning Toolkit</title>
-
-    <!-- Google Fonts: Lora (headings 400, 600) + DM Sans (body 300, 400, 500) -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap"
-    />
-
-    <link rel="stylesheet" href="style.css" />
-
-    <!-- Apply saved theme before body renders to prevent flash -->
-    <script>
-      if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
-    </script>
-  </head>
-  <body>
-
-    <!-- =====================================================================
-         NAVIGATION
-    ====================================================================== -->
-    <header>
-      <nav id="navbar">
-        <a href="#hero" class="nav-logo">PRINCE2 Toolkit</a>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#modules">Modules</a></li>
-          <li><a href="#glossary">Glossary</a></li>
-          <li><a href="#courses">Courses</a></li>
-          <li><a href="#flashcards">Flashcards</a></li>
-          <li><a href="#quiz">Quiz</a></li>
-          <li><a href="#resources">Resources</a></li>
-        </ul>
-        <button id="dark-mode-toggle" aria-label="Toggle dark mode">
-          <!-- Sun icon (light mode) -->
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <!-- Moon icon (dark mode) -->
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
-        <button id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </nav>
-    </header>
-
-    <!-- Mobile nav scrim — darkens the page behind the open drawer -->
-    <div id="nav-scrim" aria-hidden="true"></div>
-
-    <!-- Reading progress bar -->
-    <div id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-
-    <main>
-
-      <!-- ==================================================================
-           HERO
-      =================================================================== -->
-      <section id="hero">
-        <h1>Learn PRINCE2.<br>One module at a time.</h1>
-        <p class="hero-sub">A free learning toolkit for ISCS 30.40 students.</p>
-        <a href="#modules" class="btn-primary">Start Learning</a>
-      </section>
-
-      <!-- ==================================================================
-           ABOUT THE FRAMEWORK
-      =================================================================== -->
-      <section id="about">
-        <h2>About the Framework</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-        <article class="about-block">
-          <h3>What is PRINCE2?</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        </article>
-        <article class="about-block">
-          <h3>History & Context</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </article>
-        <article class="about-block">
-          <h3>Why It Matters</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </article>
-      </section>
-
-      <!-- ==================================================================
-           LEARNING MODULES
-      =================================================================== -->
-      <section id="modules">
-        <h2>Learning Modules</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Core content is organized into four modules — work through them in order or jump to the topic you need.</p>
-
-        <div class="accordion" id="modules-accordion">
-
-          <div class="accordion-item open">
-            <button class="accordion-header" aria-expanded="true">
-              Principles
-              <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>PRINCE2 Learning Toolkit</title>
+      <!-- Google Fonts: Lora (headings 400, 600) + DM Sans (body 300, 400, 500) -->
+      <link
+         rel="stylesheet"
+         href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap"
+         />
+      <link rel="stylesheet" href="style.css" />
+      <!-- Apply saved theme before body renders to prevent flash -->
+      <script>
+         if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+      </script>
+   </head>
+   <body>
+      <header>
+         <nav id="navbar">
+            <a href="#hero" class="nav-logo">PRINCE2 Toolkit</a>
+            <ul class="nav-links">
+               <li><a href="#about">About</a></li>
+               <li><a href="#modules">Modules</a></li>
+               <li><a href="#glossary">Glossary</a></li>
+               <li><a href="#courses">Courses</a></li>
+               <li><a href="#flashcards">Flashcards</a></li>
+               <li><a href="#quiz">Quiz</a></li>
+               <li><a href="#resources">Resources</a></li>
+            </ul>
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+               <!-- Sun icon (light mode) -->
+               <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="5"/>
+                  <line x1="12" y1="1" x2="12" y2="3"/>
+                  <line x1="12" y1="21" x2="12" y2="23"/>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                  <line x1="1" y1="12" x2="3" y2="12"/>
+                  <line x1="21" y1="12" x2="23" y2="12"/>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+               </svg>
+               <!-- Moon icon (dark mode) -->
+               <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+               </svg>
             </button>
-            <div class="accordion-content">
-              <div class="accordion-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">
-              Processes
-              <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            <button id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
             </button>
-            <div class="accordion-content">
-              <div class="accordion-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
+         </nav>
+      </header>
+      <!-- Mobile nav scrim — darkens the page behind the open drawer -->
+      <div id="nav-scrim" aria-hidden="true"></div>
+      <!-- Reading progress bar -->
+      <div id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      <main>
+         <!--HERO-->
+         <section id="hero">
+            <h1>Learn PRINCE2.<br>One module at a time.</h1>
+            <p class="hero-sub">A free learning toolkit for students taking ISCS 30.40: Guided Studies in Modern IT Management Frameworks.</p>
+            <a href="#modules" class="btn-primary">Start Learning</a>
+         </section>
+         <!--ABOUT THE FRAMEWORK-->
+         <section id="about" class="reveal">
+            <h2>About the Framework</h2>
+            <p>PRINCE2 (Projects in Controlled Environments) is a highly structured, process-based methodology that transforms abstract strategies into tangible IT infrastructure through continuous business justification.</p>
+            <div class="accordion">
+               <div class="accordion-item">
+                  <button class="accordion-header">
+                  What is PRINCE2?
+                  <span class="chevron">▼</span>
+                  </button>
+                  <div class="accordion-content">
+                     <div class="accordion-body">
+                        <p>PRINCE2 is a non-proprietary project management method. It is a highly structured, process-based methodology for effective project management. It is driven by continuous business justification, defined roles, and product-based planning. PRINCE2 acts as the operational process that transforms abstract Business and IT Strategies into tangible IT infrastructure and processes.</p>
+                        <p style="margin-top: 16px; margin-bottom: 12px;">At its core, the framework is built upon four integrated elements:</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                           <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                              <strong style="color: var(--color-text-primary); display: block; font-family: var(--font-heading); font-size: 0.95rem;">Principles</strong>
+                              <span style="font-size: 0.85rem; color: var(--color-text-secondary);">the guiding practices that determine if the project is being managed with PRINCE2.</span>
+                           </div>
+                           <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                              <strong style="color: var(--color-text-primary); display: block; font-family: var(--font-heading); font-size: 0.95rem;">Themes</strong>
+                              <span style="font-size: 0.85rem; color: var(--color-text-secondary);">aspects of project management that should continually be addressed throughout the project.</span>
+                           </div>
+                           <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                              <strong style="color: var(--color-text-primary); display: block; font-family: var(--font-heading); font-size: 0.95rem;">Processes</strong>
+                              <span style="font-size: 0.85rem; color: var(--color-text-secondary);">describes how a project should be managed effectively from start to finish of the project.</span>
+                           </div>
+                           <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                              <strong style="color: var(--color-text-primary); display: block; font-family: var(--font-heading); font-size: 0.95rem;">Project Environment</strong>
+                              <span style="font-size: 0.85rem; color: var(--color-text-secondary);">tailoring the method to fit the context.</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="accordion-item">
+                  <button class="accordion-header">
+                  History & Context
+                  <span class="chevron">▼</span>
+                  </button>
+                  <div class="accordion-content">
+                     <div class="accordion-body">
+                        <p>Originally developed by the UK government, it is currently owned and maintained by AXELOS. One of its primary authors was Robert Buttrick, who worked on the 2009 and 2017 updates. His work focuses on integrating project management with corporate strategy. </p>
+                        <p style="margin-top: 10px;">PRINCE2 has been adopted and used by several groups, including governments, private corporations, and even the United Nations. </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="accordion-item">
+                  <button class="accordion-header">
+                  Why It Matters
+                  <span class="chevron">▼</span>
+                  </button>
+                  <div class="accordion-content">
+                     <div class="accordion-body">
+                        <p>PRINCE2 provides a controlled environment from project initiation to closure, managing phases, risks, and quality. Because it mandates a continuous "Business Case" review at every project stage, it guarantees that IT execution remains strictly aligned with overarching business objectives, preventing IT misalignment as business needs change.</p>
+                     </div>
+                  </div>
+               </div>
             </div>
-          </div>
+         </section>
 
-          <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">
-              Roles &amp; Responsibilities
-              <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </div>
+         <section id="modules">
+            <h2>Learning Modules</h2>
+            <p>Core content is organized into five modules — work through them in order or jump to the topic you need.</p>
+            <div class="accordion" id="modules-accordion">
+
+               <!-- MODULE 1 -->
+               <div class="accordion-item open">
+                  <button class="accordion-header" aria-expanded="true">
+                     Module 1: PRINCE2 Overview
+                     <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"/>
+                     </svg>
+                  </button>
+                  <div class="accordion-content">
+                     <div class="accordion-body">
+                        <p>PRINCE2 is a highly structured, process-based methodology for effective project management. It is generic and can be applied to any project in any industry. It can accommodate any product-specific development methodology, but it does not provide industry-specific activities, detailed techniques, or leadership skills.</p>
+                        <p>Integrated in PRINCE2 are four key elements:</p>
+                        <ul>
+                           <li><strong>Principles</strong> — These represent a complete dedication to structured working methods, detailed project planning, and effective collaboration.</li>
+                           <li><strong>Themes</strong> — These focus on specific issues that need to be taken into account over the course of a project.</li>
+                           <li><strong>Processes</strong> — These involve finding out what must be done, who is responsible, and which team members will complete the work.</li>
+                           <li><strong>Project Environment</strong> — This is the context in which PRINCE2 should be tailored to.</li>
+                        </ul>
+                        <p>PRINCE2 serves as a globally recognized methodology that provides a consistent framework across all industries and technical domains. By establishing a universal vocabulary, it fosters clear communication between suppliers and customers, ensuring that everyone remains aligned regardless of the specific technology being used. The method incorporates proven best practices and is designed to integrate seamlessly with specialized product development workflows. Furthermore, it creates a high level of transparency through clearly defined roles and a formal organizational structure, which provides a reliable system for accountability, delegation, and authority.</p>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- MODULE 2 -->
+               <div class="accordion-item">
+                  <button class="accordion-header" aria-expanded="false">
+                     Module 2: PRINCE2 Principles
+                     <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"/>
+                     </svg>
+                  </button>
+                  <div class="accordion-content">
+                     <div class="accordion-body">
+                        <p>Now that we have an overview of what PRINCE2 is, we can dive deeper into its principles. PRINCE2 is governed by <strong>7 Principles</strong> that determine whether a project is being managed using the method correctly.</p>
+                        <ol>
+                           <li>
+                              <strong>Continued Business Justification</strong>
+                              <p>A project should only begin if there is a documented and approved reason for its existence, such as a need to solve a specific problem or upgrade an existing system. This justification is recorded in the Business Case. Crucially, this reasoning must remain valid throughout the entire project lifecycle. If the business environment changes and the project is no longer justifiable, it should be stopped immediately to prevent further waste of resources.</p>
+                           </li>
+                           <li>
+                              <strong>Learn from Experience</strong>
+                              <p>Efficiency comes from not reinventing the wheel. PRINCE2 teams have a collective responsibility to seek out, record, and act upon lessons learned from historical data and previous similar projects. This learning process occurs in three phases:</p>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                                  <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                                      <strong style="color: var(--color-text-primary); display: block; font-family: var(--font-heading); font-size: 0.95rem;">At the start</strong>
+                                      <span style="font-size: 0.85rem; color: var(--color-text-secondary);">Reviewing lessons from past projects</span>
+                                  </div>
+                                  <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                                      <strong style="color: var(--color-text-primary); display: block; font-family: var(--font-heading); font-size: 0.95rem;">As it progresses</strong>
+                                      <span style="font-size: 0.85rem; color: var(--color-text-secondary);">Recording new insights as they happen</span>
+                                  </div>
+                                  <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                                      <strong style="color: var(--color-text-primary); display: block; font-family: var(--font-heading); font-size: 0.95rem;">At the close</strong>
+                                      <span style="font-size: 0.85rem; color: var(--color-text-secondary);">Passing on knowledge to future teams.</span>
+                                  </div>
+                                </div>
+                            </li>
+                           <li>
+                              <strong>Defined Roles and Responsibilities</strong>
+                              <p>Effective project management requires a clear organizational structure and open communication. Every project must engage three primary stakeholder interests:</p>
+                                <ul>
+                                  <li><strong>Business</strong> (ensuring value for money)</li>
+                                  <li><strong>User</strong> (defining the requirements and using the final products)</li>
+                                  <li><strong>Supplier</strong> (providing the necessary expertise and resources)</li>
+                                </ul>
+                              <p>By defining these roles early, the project ensures that everyone knows exactly what they are accountable for.</p>
+                           </li>
+                           <li>
+                              <strong>Manage by Stages</strong>
+                              <p>PRINCE2 projects are broken down into logical "Management Stages." At a minimum, a project must have two: an Initiation Stage and at least one further stage for delivery. Dividing work this way allows for better control; the Project Board evaluates the status after every stage to decide whether to continue. Generally, shorter stages offer more granular control, while longer stages reduce management overhead.</p>
+                           </li>
+                           <li>
+                              <strong>Manage by Exception</strong>
+                              <p>To ensure the efficient use of management’s time, PRINCE2 operates on four levels: <strong>Corporate/Programme Management</strong>, <strong>Directing (Project Board)</strong>, <strong>Managing (Project Manager)</strong>, and <strong>Delivering (Team Managers)</strong>. Higher-level managers set "tolerances" for the six aspects of the project: Time, Cost, Scope, Benefits, Risks, and Quality. As long as the project stays within these limits, the Project Manager works independently. If a limit is breached, it is treated as an "exception" and escalated to the Board for a decision.</p>
+                           </li>
+                           <li>
+                              <strong>Focus on Products</strong>
+                              <p>A successful project is output-oriented rather than activity-oriented. Before work begins, the project defines the specific products to be delivered and their Quality Requirements. This is done through a "Product Description" which details the purpose, composition, and quality criteria of the output. These definitions are essential for accurately estimating effort, determining resource needs, and scheduling activities.</p>
+                           </li>
+                           <li>
+                              <strong>Tailored to Suit the Project Environment</strong>
+                              <p>PRINCE2 is not a "one size fits all" checklist. It is designed to be adapted to the project’s specific scale, complexity, risk level, and industry. The Project Initiation Document (PID) describes exactly how the methodology is being customized. By tailoring the controls and processes to fit the environment—such as existing finance or HR systems—the project remains efficient and avoids unnecessary bureaucracy.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- MODULE 3 -->
+               <div class="accordion-item">
+                  <button class="accordion-header" aria-expanded="false">
+                     Module 3: PRINCE2 Themes
+                     <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"/>
+                     </svg>
+                  </button>
+                  <div class="accordion-content">
+                     <div class="accordion-body">
+                        <p>Now that we’ve discussed PRINCE2 Principles, it is equally important to discuss PRINCE2 themes, as these are the aspects of project management that must be addressed <strong>continually</strong>. Project Managers should give thorough attention to these themes. There are 7 PRINCE2 themes, and they are listed as follows:</p>
+                        <div style="overflow-x:auto;">
+                           <table style="width:100%; border-collapse:collapse; margin-top:1rem;">
+                              <thead>
+                                 <tr>
+                                    <th style="text-align:left; padding:0.6rem 1rem; border-bottom:2px solid currentColor;">Theme</th>
+                                    <th style="text-align:left; padding:0.6rem 1rem; border-bottom:2px solid currentColor;">Answers the Question</th>
+                                    <th style="text-align:left; padding:0.6rem 1rem; border-bottom:2px solid currentColor;">Describes</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;"><strong>Business Case</strong></td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">Why?</td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">Justification for undertaking the project</td>
+                                 </tr>
+                                 <tr>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;"><strong>Organization</strong></td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">Who?</td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">Roles and responsibilities</td>
+                                 </tr>
+                                 <tr>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;"><strong>Quality</strong></td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">What?</td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">Quality attributes of the project to be delivered</td>
+                                 </tr>
+                                 <tr>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;"><strong>Plans</strong></td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">How? How much? When?</td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">How to create/modify products of the project, how much time and money is required, when to perform activities</td>
+                                 </tr>
+                                 <tr>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;"><strong>Risk</strong></td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">What if?</td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">Plans for managing uncertainties</td>
+                                 </tr>
+                                 <tr>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;"><strong>Change</strong></td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">What's the impact?</td>
+                                    <td style="padding:0.6rem 1rem; border-bottom:1px solid #ccc;">Steps for assessing impact of change and managing the change</td>
+                                 </tr>
+                                 <tr>
+                                    <td style="padding:0.6rem 1rem;"><strong>Progress</strong></td>
+                                    <td style="padding:0.6rem 1rem;">Where are we now? Where are we going? Should we carry on?</td>
+                                    <td style="padding:0.6rem 1rem;">Addresses the ongoing viability of the plans</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- MODULE 4 -->
+               <div class="accordion-item">
+                  <button class="accordion-header" aria-expanded="false">
+                     Module 4: Business Case Theme
+                     <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"/>
+                     </svg>
+                  </button>
+                  <div class="accordion-content">
+                     <div class="accordion-body">
+                        <p>At the heart of a PRINCE2 project lies the <strong>Business Case</strong>. It provides the justification for why the project should push through and aids as the primary tool for decision-making. If a Business Case is not valid or if it is no longer found to be valid, the project has no reason to push forward. </p>
+                        <p>The fundamental role of this theme is to establish a mechanism to judge whether a project is—and remains—worth the investment. This is measured against three specific criteria:</p>
+                        <ul>
+                           <li><strong>Desirable</strong> — Is the balance between costs, benefits, and risks favorable?</li>
+                           <li><strong>Viable</strong> — Is the project practical? Can we actually deliver the products?</li>
+                           <li><strong>Achievable</strong> — Will the products actually result in the intended benefits?</li>
+                        </ul>
+                        <p>The <strong>Business Case</strong> is not a static document created once at the start; it must be actively maintained and updated throughout the project's life with the latest information regarding costs, timescales, and risks.</p>
+
+                        <p>A Business Case evolves as the project becomes more defined. The process follows a "Develop, Verify, Maintain, and Confirm" cycle:</p>
+                        <h4 style="margin-top: 24px; margin-bottom: 12px; font-size: 0.95rem; color: var(--color-text-primary);">The Lifecycle: Develop, Verify, Maintain, Confirm</h4>
+                        
+                        <div style="border-left: 2px solid var(--color-accent-blue); margin-left: 10px; padding-left: 20px; display: flex; flex-direction: column; gap: 20px;">
+                          <div>
+                            <strong style="display: block; color: var(--color-accent-blue); font-size: 0.85rem; text-transform: uppercase;">Starting Up</strong>
+                            <span style="font-size: 0.9rem;">An <strong>Outline Business Case</strong> is created to see if the project is worth the initial effort.</span>
+                          </div>
+                          <div>
+                            <strong style="display: block; color: var(--color-accent-blue); font-size: 0.85rem; text-transform: uppercase;">Initiating</strong>
+                            <span style="font-size: 0.9rem;">A <strong>Detailed Business Case</strong> is developed to plan the full project.</span>
+                          </div>
+                          <div>
+                            <strong style="display: block; color: var(--color-accent-blue); font-size: 0.85rem; text-transform: uppercase;">Throughout the Project</strong>
+                            <span style="font-size: 0.9rem;">It is <strong>Verified</strong> by the Project Board at every stage boundary to ensure it is still worthwhile.</span>
+                          </div>
+                          <div>
+                            <strong style="display: block; color: var(--color-accent-blue); font-size: 0.85rem; text-transform: uppercase;">After the Project</strong>
+                            <span style="font-size: 0.9rem;">Benefits are <strong>Confirmed</strong> during and after close to ensure the investment was successful.</span>
+                          </div>
+                        </div>
+                        <br>
+
+                        <p>A standard PRINCE2 Business Case includes the following key contents:</p> 
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+                          <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                            <strong style="color: var(--color-text-primary); display: block; font-size: 0.9rem;">Executive Summary</strong>
+                            <span style="font-size: 0.82rem; color: var(--color-text-secondary);">A high-level overview for senior management.</span>
+                          </div>
+                          <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                            <strong style="color: var(--color-text-primary); display: block; font-size: 0.9rem;">Business Options</strong>
+                            <span style="font-size: 0.82rem; color: var(--color-text-secondary);">A look at different ways to move forward. The <em>"Do Nothing"</em> option must always be included as a baseline for comparison.</span>
+                          </div>
+                          <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                            <strong style="color: var(--color-text-primary); display: block; font-size: 0.9rem;">Expected Benefits</strong>
+                            <span style="font-size: 0.82rem; color: var(--color-text-secondary);">Quantifiable and measurable improvements.</span>
+                          </div>
+                          <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                            <strong style="color: var(--color-text-primary); display: block; font-size: 0.9rem;">Timeframes</strong>
+                            <span style="font-size: 0.82rem; color: var(--color-text-secondary);">The duration of the project and when benefits are expected to be realized.</span>
+                          </div>
+                          <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                            <strong style="color: var(--color-text-primary); display: block; font-size: 0.9rem;">Costs</strong>
+                            <span style="font-size: 0.82rem; color: var(--color-text-secondary);">Both the project budget and ongoing operational/maintenance costs.</span>
+                          </div>
+                          <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                            <strong style="color: var(--color-text-primary); display: block; font-size: 0.9rem;">Investment Appraisal</strong>
+                            <span style="font-size: 0.82rem; color: var(--color-text-secondary);">A comparison of the total costs against the value of the benefits.</span>
+                          </div>
+                          <div style="padding: 12px 16px; background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                            <strong style="color: var(--color-text-primary); display: block; font-size: 0.9rem;">Major Risks</strong>
+                            <span style="font-size: 0.82rem; color: var(--color-text-secondary);">Any significant uncertainties that could prevent the project from succeeding.</span>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+               </div>
+
+               <!-- MODULE 5 -->
+               <div class="accordion-item">
+                  <button class="accordion-header" aria-expanded="false">
+                     Module 5: Organization Theme
+                     <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"/>
+                     </svg>
+                  </button>
+                  <div class="accordion-content">
+                     <div class="accordion-body">
+                        <p>Now that we know what lies at the heart of a PRINCE2 project, we need to know for whom this heart functions. A PRINCE2 Project has <strong>three main project interests</strong>:</p>
+                        <ul>
+                           <li><strong>Business</strong> — They ensure that investment in the project is worthwhile and provides value for money.</li>
+                           <li><strong>User</strong> — They will be using the final products to realize benefits or maintain the output.</li>
+                           <li><strong>Supplier</strong> —  They provide the skills, resources, and knowledge needed to produce the products.</li>
+                        </ul>
+                        <p>Additonally, there are also <strong>four levels of management</strong>in a PRINCE2 Project. These are:</p>
+                        <ul>
+                           <li><strong>Corporate / Programme Management</strong> — Sets the standards and provides the project mandate; is the appointed Executive that makes sure the project is executed under the defined constraints</li>
+                           <li><strong>Directing (Project Board)</strong> — Provides overall direction and is responsible for major decisions such as timelines, restraints, etc. </li>
+                           <li><strong>Managing (Project Manager)</strong> — Handles day-to-day management within established constraints; appointed by the Project Board to control the 6 aspects of the project: Time, Cost, Scope, Benefits, Risks, and Quality</li>
+                           <li><strong>Delivering (Team Manager)</strong> — Focuses on creating the actual "specialist products".</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
-          </div>
+         </section>
 
-          <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">
-              Benefits
-              <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos ratione.</p>
-              </div>
+         <!-- GLOSSARY -->
+         <section id="glossary">
+            <h2>Glossary</h2>
+            <p>Search or browse key PRINCE2 terms alphabetically.</p>
+            <input type="search" id="glossary-search" placeholder="Search terms…" aria-label="Search glossary" />
+            <p id="glossary-no-results" hidden>No results found.</p>
+            <dl id="glossary-list">
+               <div class="glossary-item">
+                  <dt>Benefits Review Plan</dt>
+                  <dd>A plan defining how and when the achievement of the project's expected benefits will be measured. Maintained by the Executive.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Business Case</dt>
+                  <dd>Justification for undertaking a project, based on estimated costs, risks, and expected benefits. Owned by the Executive throughout the project.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Change Authority</dt>
+                  <dd>A person or group delegated authority by the Project Board to approve changes within defined limits, avoiding bottlenecks at Board level.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Checkpoint Report</dt>
+                  <dd>A progress report prepared by a Team Manager for the Project Manager covering the current status of a Work Package.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Exception Report</dt>
+                  <dd>A report describing a forecast deviation beyond agreed tolerances, its cause, impact, options, and a recommended course of action. Triggers an Exception Plan.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Executive</dt>
+                  <dd>The single individual with overall responsibility for the project, accountable to corporate or programme management. Chairs the Project Board.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Highlight Report</dt>
+                  <dd>A time-driven report from the Project Manager to the Project Board summarising stage progress and any forecast deviations from the Stage Plan.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Lessons Log</dt>
+                  <dd>An informal repository for lessons learned during the project, recording both positive experiences and problems so they can be shared with future projects.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Product Description</dt>
+                  <dd>A document defining a product's purpose, composition, format, quality criteria, and the skills required to create and review it.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Project Board</dt>
+                  <dd>The body accountable for the overall direction and management of the project. Comprises the Executive, Senior User, and Senior Supplier.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Project Initiation Document (PID)</dt>
+                  <dd>The primary contract between the Project Manager and the Project Board. Brings together the Business Case, approach, plans, controls, and team structure.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Risk Register</dt>
+                  <dd>A record of identified risks relating to the project, including their status, probability, impact, and the responses planned to manage them.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Stage Plan</dt>
+                  <dd>A detailed plan for the current management stage, created near the end of the previous stage. Used by the Project Manager to control day-to-day work.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Tolerance</dt>
+                  <dd>The permissible deviation above and below a plan's target for time, cost, quality, scope, risk, or benefit before the deviation must be escalated to the next management level.</dd>
+               </div>
+               <div class="glossary-item">
+                  <dt>Work Package</dt>
+                  <dd>An assignment given by the Project Manager to a Team Manager describing the work to be done, quality requirements, constraints, and reporting expectations.</dd>
+               </div>
+            </dl>
+         </section>
+
+         <!--RECOMMENDED COURSES-->
+         <section id="courses">
+          <h2>Recommended Courses</h2>
+          <p>Side-by-side comparison of two free online PRINCE2 courses evaluated for this module. Both cover Foundation-level content; see below for how they differ.</p>
+          <div class="course-table-wrapper">
+            <table class="course-table">
+              <thead>
+                <tr>
+                  <th scope="col" style="vertical-align: bottom; padding-bottom: 64px;">Criteria</th>
+                  
+                  <th scope="col">
+                    <div class="course-header-content">
+                      <span class="badge-recommended">Recommended</span>
+                      <div class="course-name">SkillUp by Simplilearn</div>
+                      <a href="https://www.simplilearn.com/free-prince2-course-skillup" class="course-link" target="_blank" rel="noopener">View course →</a>
+                    </div>
+                  </th>
+
+                  <th scope="col">
+                    <div class="course-header-content">
+                      <span class="badge-placeholder"></span> 
+                      <div class="course-name">Alison: PRINCE2 Fundamental Concepts</div>
+                      <a href="https://alison.com/course/prince2-project-management-practitioner" class="course-link" target="_blank" rel="noopener">View course →</a>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Course Focus</td>
+                  <td>Deep-dive: explains why PRINCE2 matters, covering its 7 principles, 7 themes, and processes with real-world company examples.</td>
+                  <td>Comparative: situates PRINCE2 alongside Agile, Scrum, Kanban, and Lean. Helps students understand where PRINCE2 fits in the broader PM landscape.</td>
+                </tr>
+                <tr>
+                  <td>Content Structure</td>
+  
+                  <td>
+                    <div class="syllabus-flow">
+                      <span class="step">Introduction</span>
+                      <span class="sep">→</span>
+                      <span class="step">What is PRINCE2?</span>
+                      <span class="sep">→</span>
+                      <span class="step">PRINCE2 Principles</span>
+                      <span class="sep">→</span>
+                      <span class="step">PRINCE2 Themes</span>
+                      <span class="sep">→</span>
+                      <span class="step">Business Case Theme</span>
+                      <span class="sep">→</span>
+                      <span class="step">Organisation Theme</span>
+                    </div>
+                  </td>
+                  
+                  <td>
+                    <div class="syllabus-flow">
+                      <span class="step">Learning Outcomes</span>
+                      <span class="sep">→</span>
+                      <span class="step">Introduction to PRINCE2</span>
+                      <span class="sep">→</span>
+                      <span class="step">Program Configuration</span>
+                      <span class="sep">→</span>
+                      <span class="step">Relations to Other PM Tools</span>
+                      <span class="sep">→</span>
+                      <span class="step highlight">Final Assessment</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Teaching Method</td>
+                  <td>Video-based with voice narration. Diagrams and illustrations are integrated throughout the lessons for stronger visual learning.</td>
+                  <td>Text-based modules with slides. Structured lesson flow ending in a formal course assessment.</td>
+                </tr>
+                <tr>
+                  <td>Visual Aids</td>
+                  <td>Heavy use of diagrams and illustrations. Visuals are a core part of the learning design, arguably the strongest differentiator of this course.</td>
+                  <td>Moderate use of visuals. Less emphasis on diagrams compared to SkillUp.</td>
+                </tr>
+                <tr>
+                  <td>Real-world examples</td>
+                  <td>Provides actual examples of how companies apply PRINCE2 in practice, making abstract concepts more concrete.</td>
+                  <td>Limited. Focuses more on conceptual comparisons between methodologies rather than applied case studies.</td>
+                </tr>
+                <tr>
+                  <td>Assessment/Quiz</td>
+                  <td>
+                    <p>No quiz or assessment. Completion is tracked by finishing all video content.</p>
+                    <div class="table-warning">
+                      <span>⚠</span> <em>No knowledge-retention test for students.</em>
+                    </div>
+                  </td>
+                  
+                  <td>
+                    <p>Has a formal course assessment using fill-in-the-blank questions.</p>
+                    <div class="table-warning">
+                      <span>⚠</span> <em>Strict exact-match grading: answering "issue" instead of "issues" is marked wrong.</em>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Anti-cheat mechanism</td>
+                  <td>Platform actively prevents video skipping. Students must watch all content in full to earn the certificate — no fast-forwarding allowed.</td>
+                  <td>Strict exact-match answers in the assessment penalise even minor spelling or plural variations.</td>
+                </tr>
+                <tr>
+                  <td>PRINCE2 depth</td>
+                  <td>More comprehensive. Covers the 7 principles, 7 themes, and processes  closer to PRINCE2 Foundation exam preparation.</td>
+                  <td>Foundational. Suitable for students who want a broad overview without diving deep into the PRINCE2 framework itself.</td>
+                </tr>
+                <tr>
+                  <td>Agile/Scrum coverage</td>
+                  <td>Covered in advanced tracks. The free SkillUp course focuses on PRINCE2 as a standalone methodology.</td>
+                  <td>Yes, explicitly compares PRINCE2 with Agile, Scrum, Kanban, and Lean. This is a highlight of the course.</td>
+                </tr>
+                <tr>
+                  <td>Certificate</td>
+                  <td>Yes — awarded upon completing all video modules. No exam required, making it easier to obtain.</td>
+                  <td>Yes — requires passing the course assessment (80%+ score) to earn the Alison diploma/certificate.</td>
+                </tr>
+                <tr>
+                  <td>Best suited for</td>
+                  <td>Students who want a deeper, visually-rich understanding of PRINCE2's internal framework  principles, themes, and business cases.</td>
+                  <td>Students who want a broad overview of PRINCE2 in relation to modern agile methodologies, and are comfortable with strict quiz formats.</td>
+                </tr>
+                <tr>
+                  <td>Overall Rating</td>
+                  <td><span class="stars">★★★★★</span> 5 / 5</td>
+                  <td><span class="stars">★★★☆☆</span> 3 / 5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+         <!--FLASHCARDS-->
+         <section id="flashcards">
+            <h2>Flashcards</h2>
+            <p>Click a card to flip it and reveal the definition. Use the buttons to move through the deck, shuffle, or start over.</p>
+            <!-- 3D flip card — JS targets #flashcard, .card-term, .card-def, .flip-hint -->
+            <div class="flashcard-scene">
+               <div class="flashcard" id="flashcard" role="button" tabindex="0" aria-label="Flip card to see definition">
+                  <div class="flashcard-face flashcard-front">
+                     <p class="flip-hint">Click to flip</p>
+                     <p class="card-term"></p>
+                  </div>
+                  <div class="flashcard-face flashcard-back">
+                     <p class="card-def"></p>
+                  </div>
+               </div>
             </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ==================================================================
-           GLOSSARY
-      =================================================================== -->
-      <section id="glossary">
-        <h2>Glossary</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Search or browse key PRINCE2 terms alphabetically.</p>
-        <input
-          type="search"
-          id="glossary-search"
-          placeholder="Search terms…"
-          aria-label="Search glossary"
-        />
-        <p id="glossary-no-results" hidden>No results found.</p>
-        <dl id="glossary-list">
-          <div class="glossary-item">
-            <dt>Business Case</dt>
-            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</dd>
-          </div>
-          <div class="glossary-item">
-            <dt>Change Authority</dt>
-            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit.</dd>
-          </div>
-          <div class="glossary-item">
-            <dt>Exception Plan</dt>
-            <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident.</dd>
-          </div>
-        </dl>
-      </section>
-
-      <!-- ==================================================================
-           RECOMMENDED COURSES
-           Replace all placeholder values with your actual evaluation data.
-      =================================================================== -->
-      <section id="courses">
-        <h2>Recommended Courses</h2>
-        <p>Side-by-side comparison of two online PRINCE2 courses evaluated for this module. Both cover Foundation-level content; see below for how they differ.</p>
-
-        <div class="course-table-wrapper">
-          <table class="course-table">
-            <thead>
-              <tr>
-                <th>Criteria</th>
-                <th>
-                  [Course Name A]
-                  <span class="badge-recommended">Recommended</span>
-                  <a href="#" class="course-link" target="_blank" rel="noopener">View course →</a>
-                </th>
-                <th>
-                  [Course Name B]
-                  <a href="#" class="course-link" target="_blank" rel="noopener">View course →</a>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Platform</td>
-                <td>[e.g. Udemy]</td>
-                <td>[e.g. Coursera]</td>
-              </tr>
-              <tr>
-                <td>Cost</td>
-                <td>[e.g. ~₱500 on sale]</td>
-                <td>[e.g. Free to audit]</td>
-              </tr>
-              <tr>
-                <td>Duration</td>
-                <td>[e.g. 6 hours]</td>
-                <td>[e.g. 10 hours]</td>
-              </tr>
-              <tr>
-                <td>Format</td>
-                <td>[e.g. Video + quizzes]</td>
-                <td>[e.g. Video + readings]</td>
-              </tr>
-              <tr>
-                <td>Certificate on Completion</td>
-                <td>[e.g. Yes — paid]</td>
-                <td>[e.g. Yes — with subscription]</td>
-              </tr>
-              <tr>
-                <td>PRINCE2 Coverage Depth</td>
-                <td>[e.g. All 7 themes + 7 principles]</td>
-                <td>[e.g. Overview only]</td>
-              </tr>
-              <tr>
-                <td>Beginner Friendly</td>
-                <td>[e.g. Yes — no prerequisites]</td>
-                <td>[e.g. Some IT background assumed]</td>
-              </tr>
-              <tr>
-                <td>Overall Rating</td>
-                <td><span class="stars">★★★★★</span> 5 / 5</td>
-                <td><span class="stars">★★★☆☆</span> 3 / 5</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- ==================================================================
-           FLASHCARDS
-      =================================================================== -->
-      <section id="flashcards">
-        <h2>Flashcards</h2>
-        <p>Click a card to flip it and reveal the definition. Use the buttons to move through the deck, shuffle, or start over.</p>
-
-        <!-- 3D flip card — JS targets #flashcard, .card-term, .card-def, .flip-hint -->
-        <div class="flashcard-scene">
-          <div class="flashcard" id="flashcard" role="button" tabindex="0" aria-label="Flip card to see definition">
-            <div class="flashcard-face flashcard-front">
-              <p class="flip-hint">Click to flip</p>
-              <p class="card-term"></p>
+            <!-- Prev / counter / Next -->
+            <div class="flashcard-controls">
+               <button id="prev-card">← Prev</button>
+               <span id="card-counter">1 / 15</span>
+               <button id="next-card">Next →</button>
             </div>
-            <div class="flashcard-face flashcard-back">
-              <p class="card-def"></p>
+            <!-- Shuffle and Restart -->
+            <div class="flashcard-actions">
+               <button id="shuffle-btn">Shuffle deck</button>
+               <button id="restart-btn">Restart</button>
             </div>
-          </div>
-        </div>
-
-        <!-- Prev / counter / Next -->
-        <div class="flashcard-controls">
-          <button id="prev-card">← Prev</button>
-          <span id="card-counter">1 / 15</span>
-          <button id="next-card">Next →</button>
-        </div>
-
-        <!-- Shuffle and Restart -->
-        <div class="flashcard-actions">
-          <button id="shuffle-btn">Shuffle deck</button>
-          <button id="restart-btn">Restart</button>
-        </div>
-      </section>
-
-      <!-- ==================================================================
-           QUIZ
-      =================================================================== -->
-      <section id="quiz">
-        <h2>Quiz</h2>
-        <p>Test your PRINCE2 knowledge with 12 multiple choice questions. Score 70% or above to unlock your certificate of completion.</p>
-
-        <!-- Intro screen -->
-        <div id="quiz-intro" class="quiz-card">
-          <p class="quiz-intro-meta">12 questions &middot; Multiple choice &middot; No time limit</p>
-          <p id="last-score-line" hidden>Previous best: <strong id="last-score"></strong></p>
-          <button id="start-quiz-btn" class="btn-primary">Start Quiz</button>
-        </div>
-
-        <!-- Quiz in progress -->
-        <div id="quiz-body" class="quiz-card" hidden>
-          <div class="quiz-card-progress-wrap">
-            <div id="quiz-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <p id="question-counter" class="question-counter">Question 1 of 12</p>
-          <p id="question-text" class="question-text"></p>
-          <div id="answer-options" class="answer-options"></div>
-        </div>
-
-        <!-- Results screen -->
-        <div id="quiz-results" class="quiz-card" hidden>
-          <div class="results-score">
-            <span id="score-fraction">0 / 12</span>
-            <span id="score-percent">0%</span>
-          </div>
-          <p id="score-message" class="score-message"></p>
-          <p id="prev-best-line" hidden>Previous best: <strong id="prev-best-value"></strong></p>
-          <div class="results-actions">
-            <button id="retry-btn" class="btn-primary">Try Again</button>
-          </div>
-
-          <!-- Certificate — revealed when score >= 70% -->
-          <div id="certificate" hidden>
-
-            <!-- Name prompt — hidden from print, sits above the card -->
-            <div class="cert-name-prompt">
-              <label for="cert-name">Enter your name to personalise your certificate:</label>
-              <input
-                type="text"
-                id="cert-name"
-                placeholder="Your full name"
-                aria-label="Your name for the certificate"
-                autocomplete="name"
-              />
+         </section>
+         <!--QUIZ-->
+         <section id="quiz">
+            <h2>Quiz</h2>
+            <p>Test your PRINCE2 knowledge with 12 multiple choice questions. Score 70% or above to unlock your certificate of completion.</p>
+            <!-- Intro screen -->
+            <div id="quiz-intro" class="quiz-card">
+               <p class="quiz-intro-meta">12 questions &middot; Multiple choice &middot; No time limit</p>
+               <p id="last-score-line" hidden>Previous best: <strong id="last-score"></strong></p>
+               <button id="start-quiz-btn" class="btn-primary">Start Quiz</button>
             </div>
-
-            <!-- The printable certificate card -->
-            <div class="cert-card" id="cert-card">
-              <div class="cert-inner">
-
-                <div class="cert-badge" aria-hidden="true">
-                  <!-- Award ribbon icon in --color-accent-rust -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="8" r="6"/>
-                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-                  </svg>
-                </div>
-
-                <p class="cert-eyebrow">Certificate of Completion</p>
-                <p class="cert-presented-to">This certifies that</p>
-                <p class="cert-student-name" id="cert-student-name">Your Name</p>
-                <p class="cert-description">has successfully completed the</p>
-                <p class="cert-course-title">PRINCE2 Learning Toolkit</p>
-                <p class="cert-score-line">Score: <span id="cert-score"></span></p>
-
-                <div class="cert-rule" aria-hidden="true"></div>
-
-                <p class="cert-footer-meta">ISCS 30.40 &middot; CSYN &middot; <span id="cert-date"></span></p>
-
-              </div>
+            <!-- Quiz in progress -->
+            <div id="quiz-body" class="quiz-card" hidden>
+               <div class="quiz-card-progress-wrap">
+                  <div id="quiz-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+               </div>
+               <p id="question-counter" class="question-counter">Question 1 of 12</p>
+               <p id="question-text" class="question-text"></p>
+               <div id="answer-options" class="answer-options"></div>
             </div>
-
-            <div class="cert-actions">
-              <button id="print-cert-btn" class="btn-primary">Print / Save as PDF</button>
+            <!-- Results screen -->
+            <div id="quiz-results" class="quiz-card" hidden>
+               <div class="results-score">
+                  <span id="score-fraction">0 / 12</span>
+                  <span id="score-percent">0%</span>
+               </div>
+               <p id="score-message" class="score-message"></p>
+               <p id="prev-best-line" hidden>Previous best: <strong id="prev-best-value"></strong></p>
+               <div class="results-actions">
+                  <button id="retry-btn" class="btn-primary">Try Again</button>
+               </div>
+               <!-- Certificate — revealed when score >= 70% -->
+               <div id="certificate" hidden>
+                  <!-- Name prompt — hidden from print, sits above the card -->
+                  <div class="cert-name-prompt">
+                     <label for="cert-name">Enter your name to personalise your certificate:</label>
+                     <input
+                        type="text"
+                        id="cert-name"
+                        placeholder="Your full name"
+                        aria-label="Your name for the certificate"
+                        autocomplete="name"
+                        />
+                  </div>
+                  <!-- The printable certificate card -->
+                  <div class="cert-card" id="cert-card">
+                     <div class="cert-inner">
+                        <div class="cert-badge" aria-hidden="true">
+                           <!-- Award ribbon icon in --color-accent-rust -->
+                           <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                              <circle cx="12" cy="8" r="6"/>
+                              <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                           </svg>
+                        </div>
+                        <p class="cert-eyebrow">Certificate of Completion</p>
+                        <p class="cert-presented-to">This certifies that</p>
+                        <p class="cert-student-name" id="cert-student-name">Your Name</p>
+                        <p class="cert-description">has successfully completed the</p>
+                        <p class="cert-course-title">PRINCE2 Learning Toolkit</p>
+                        <p class="cert-score-line">Score: <span id="cert-score"></span></p>
+                        <div class="cert-rule" aria-hidden="true"></div>
+                        <p class="cert-footer-meta">ISCS 30.40 &middot; CSYN &middot; <span id="cert-date"></span></p>
+                     </div>
+                  </div>
+                  <div class="cert-actions">
+                     <button id="print-cert-btn" class="btn-primary">Print / Save as PDF</button>
+                  </div>
+               </div>
             </div>
+         </section>
+         <!--RESOURCES-->
+         <section id="resources">
+          <h2>Resources</h2>
+          <p>Download the cheat sheet, access official documentation, and find all references used in this toolkit.</p>
 
-          </div>
-        </div>
-      </section>
+          <article class="resource-block">
+            <h3>Cheat Sheet</h3>
+            <p>A one-page PDF summary of the PRINCE2 framework covering all 7 principles, 7 themes, and key roles — save it, print it, keep it handy.</p>
+            <a href="assets/prince2-cheat-sheet.pdf" class="btn-primary" download>Download PDF</a>
+          </article>
 
-      <!-- ==================================================================
-           RESOURCES
-      =================================================================== -->
-      <section id="resources">
-        <h2>Resources</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Download the cheat sheet, access official documentation, and find all references used in this toolkit.</p>
+          <article class="resource-block">
+            <h3>Official Documentation</h3>
+            <p>Links to the official PRINCE2 resources for further reading and certification information.</p>
+            <ul>
+              <li><a href="https://www.prince2.com" target="_blank" rel="noopener">Official PRINCE2 Website</a></li>
+              <li><a href="https://www.axelos.com/certifications/propath/prince2-project-management" target="_blank" rel="noopener">AXELOS — PRINCE2 Certification</a></li>
+            </ul>
+          </article>
 
-        <article class="resource-block">
-          <h3>Cheat Sheet</h3>
-          <p>A one-page PDF summary of the PRINCE2 framework — save it, print it, keep it handy.</p>
-          <a href="assets/prince2-cheat-sheet.pdf" class="btn-primary" download>Download PDF</a>
-        </article>
+          <article class="resource-block">
+            <h3>Recommended Courses</h3>
+            <p>Both courses below are free and were completed by all group members as part of the evaluation process.</p>
+            <ul>
+              <li><a href="https://www.simplilearn.com/free-prince2-course-skillup" target="_blank" rel="noopener">SkillUp by Simplilearn — Free PRINCE2 Course</a></li>
+              <li><a href="https://alison.com/course/prince2-project-management-practitioner" target="_blank" rel="noopener">Alison — PRINCE2 Fundamental Concepts</a></li>
+            </ul>
+          </article>
 
-        <article class="resource-block">
-          <h3>Official Documentation</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Links to the official PRINCE2 resources.</p>
-          <ul>
-            <li><a href="#">Official PRINCE2 Website</a></li>
-            <li><a href="#">AXELOS Knowledge Hub</a></li>
-          </ul>
-        </article>
-
-        <article class="resource-block">
-          <h3>References</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. All sources cited in proper academic format.</p>
-          <ol id="references-list">
-            <li>Reference placeholder one. Lorem ipsum dolor sit amet.</li>
-            <li>Reference placeholder two. Consectetur adipiscing elit.</li>
-            <li>Reference placeholder three. Sed do eiusmod tempor.</li>
-          </ol>
-        </article>
-      </section>
-
-    </main>
-
-    <!-- =====================================================================
-         FOOTER
-    ====================================================================== -->
-    <footer id="footer">
-      <div class="footer-inner">
-
-        <div class="footer-brand">
-          <p class="footer-title">PRINCE2 Learning Toolkit</p>
-          <p>A free study resource for ISCS 30.40.</p>
-        </div>
-
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="#about">About</a>
-          <a href="#modules">Modules</a>
-          <a href="#glossary">Glossary</a>
-          <a href="#flashcards">Flashcards</a>
-          <a href="#quiz">Quiz</a>
-          <a href="#resources">Resources</a>
-        </nav>
-
-        <div class="footer-meta">
-          <p class="footer-meta-label">Built by CSYN</p>
-          <ul class="footer-members">
-            <li>Bettina Asuncion</li>
-            <li>Neil Aldous Biason</li>
-            <li>Juan Paolo Gines</li>
-            <li>Christian Naguio</li>
-            <li>Jedale Sabio</li>
-          </ul>
-        </div>
-
-      </div>
-      <div class="footer-bottom">
-        <span>ISCS 30.40: Guided Studies in Modern IT Management Frameworks &middot; 2025</span>
-        <a href="#hero">Back to top &uarr;</a>
-      </div>
-    </footer>
-
-    <script src="main.js"></script>
-    <script src="quiz.js"></script>
-  </body>
+          <article class="resource-block">
+            <h3>References</h3>
+            <p>All sources used in this toolkit in academic format.</p>
+            <ol id="references-list">
+              <li>AXELOS. (2017). <em>Managing Successful Projects with PRINCE2 (6th ed.)</em>. The Stationery Office.</li>
+              <li>Buttrick, R. (2009). <em>The Project Workout: The Ultimate Handbook of Project and Programme Management</em>. Pearson Education.</li>
+              <li>AXELOS. (n.d.). <em>What is PRINCE2?</em> Retrieved from https://www.axelos.com/certifications/propath/prince2-project-management</li>
+              <li>Simplilearn. (n.d.). <em>Introduction to PRINCE2®</em> [Video]. SkillUp by Simplilearn. Retrieved from https://www.simplilearn.com/free-prince2-course-skillup</li>
+              <li>Alison. (n.d.). <em>PRINCE2® Project Management - Practitioner</em>. Retrieved from https://alison.com/course/prince2-project-management-practitioner</li>
+            </ol>
+          </article>
+        </section>
+      </main>
+      <!--FOOTER -->
+      <footer id="footer">
+         <div class="footer-inner">
+            <div class="footer-brand">
+               <p class="footer-title">PRINCE2 Learning Toolkit</p>
+               <p>A free study resource for ISCS 30.40.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+               <a href="#about">About</a>
+               <a href="#modules">Modules</a>
+               <a href="#glossary">Glossary</a>
+               <a href="#flashcards">Flashcards</a>
+               <a href="#quiz">Quiz</a>
+               <a href="#resources">Resources</a>
+            </nav>
+            <div class="footer-meta">
+               <p class="footer-meta-label">Built by CSYN</p>
+               <ul class="footer-members">
+                  <li>Bettina Asuncion</li>
+                  <li>Neil Aldous Biason</li>
+                  <li>Juan Paolo Gines</li>
+                  <li>Christian Naguio</li>
+                  <li>Jedale Sabio</li>
+               </ul>
+            </div>
+         </div>
+         <div class="footer-bottom">
+            <span>ISCS 30.40: Guided Studies in Modern IT Management Frameworks &middot; 2026</span>
+            <a href="#hero">Back to top &uarr;</a>
+         </div>
+      </footer>
+      <script src="main.js"></script>
+      <script src="quiz.js"></script>
+   </body>
 </html>

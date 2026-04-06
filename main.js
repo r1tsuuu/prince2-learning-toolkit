@@ -1,16 +1,3 @@
-/* ==========================================================================
-   DARK MODE
-   Theme is applied on <html> before body renders (inline script in <head>).
-   This listener handles user-initiated toggles and persists the preference.
-   CSS variables in style.css handle all color changes when .dark is present.
-   ========================================================================== */
-
-/* ==========================================================================
-   MOBILE NAV — Hamburger drawer
-   Toggles .open on the drawer, scrim, and hamburger button.
-   Closes on: scrim click, nav link click, Escape key.
-   ========================================================================== */
-
 const hamburger   = document.getElementById('nav-hamburger');
 const navDrawer   = document.querySelector('.nav-links');
 const navScrim    = document.getElementById('nav-scrim');
@@ -47,25 +34,12 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeNav();
 });
 
-/* ==========================================================================
-   DARK MODE
-   Theme is applied on <html> before body renders (inline script in <head>).
-   This listener handles user-initiated toggles and persists the preference.
-   CSS variables in style.css handle all color changes when .dark is present.
-   ========================================================================== */
-
 const darkToggle = document.getElementById('dark-mode-toggle');
 
 darkToggle.addEventListener('click', function () {
   const isDark = document.documentElement.classList.toggle('dark');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
-
-/* ==========================================================================
-   READING PROGRESS BAR
-   Throttled with requestAnimationFrame so the DOM write happens at most once
-   per frame, not on every pixel of scroll.
-   ========================================================================== */
 
 const progressBar = document.getElementById('progress-bar');
 let rafPending = false;
@@ -80,13 +54,6 @@ window.addEventListener('scroll', function () {
     rafPending = false;
   });
 });
-
-/* ==========================================================================
-   ACTIVE NAVIGATION HIGHLIGHTING
-   IntersectionObserver is used instead of a scroll listener — it fires only
-   when a section crosses the threshold, making it more performant.
-   A section is considered active when 40% or more of it is in the viewport.
-   ========================================================================== */
 
 const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -104,12 +71,6 @@ document.querySelectorAll('main section[id]').forEach(function (section) {
   sectionObserver.observe(section);
 });
 
-/* ==========================================================================
-   SECTION REVEAL ANIMATIONS
-   One IntersectionObserver handles both section headings and staggered cards.
-   Elements get the .reveal class here so that content is visible without JS.
-   Once .visible is added, the CSS transition plays. Unobserved after trigger.
-   ========================================================================== */
 
 // Elements to reveal as single units (sections, quiz cards, resource blocks)
 const revealSingles = document.querySelectorAll(
@@ -160,12 +121,6 @@ revealSingles.forEach(function (el) {
   });
 });
 
-/* ==========================================================================
-   ACCORDION — Learning Modules
-   One item open at a time. Clicking an open item closes it.
-   CSS max-height transition handles the animation — no JS animation needed.
-   ========================================================================== */
-
 document.querySelectorAll('.accordion-header').forEach(function (header) {
   header.addEventListener('click', function () {
     const item = header.parentElement;
@@ -185,12 +140,6 @@ document.querySelectorAll('.accordion-header').forEach(function (header) {
   });
 });
 
-/* ==========================================================================
-   GLOSSARY — Live Search
-   Filters .glossary-item elements by their <dt> text on each keystroke.
-   Shows a "no results" message when nothing matches.
-   ========================================================================== */
-
 const glossarySearch = document.getElementById('glossary-search');
 const glossaryItems = document.querySelectorAll('.glossary-item');
 const glossaryNoResults = document.getElementById('glossary-no-results');
@@ -208,13 +157,6 @@ glossarySearch.addEventListener('input', function () {
 
   glossaryNoResults.hidden = visibleCount > 0;
 });
-
-/* ==========================================================================
-   FLASHCARDS
-   Deck is an array of { term, definition } objects defined here.
-   Fisher-Yates shuffle randomizes a copy; Restart restores the original order.
-   The flip-hint disappears permanently after the first card is flipped.
-   ========================================================================== */
 
 const flashcardData = [
   {

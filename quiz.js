@@ -107,10 +107,6 @@ const quizData = [
 const PASS_THRESHOLD = 0.7;   // 70%
 const AUTO_ADVANCE_MS = 1500; // ms to show answer feedback before advancing
 
-/* --------------------------------------------------------------------------
-   DOM references
-   -------------------------------------------------------------------------- */
-
 const quizIntro       = document.getElementById('quiz-intro');
 const quizBody        = document.getElementById('quiz-body');
 const quizResults     = document.getElementById('quiz-results');
@@ -134,16 +130,9 @@ const certDateEl        = document.getElementById('cert-date');
 const certNameInput     = document.getElementById('cert-name');
 const printCertBtn      = document.getElementById('print-cert-btn');
 
-/* --------------------------------------------------------------------------
-   State
-   -------------------------------------------------------------------------- */
-
 let currentQuestion = 0;
 let score = 0;
 
-/* --------------------------------------------------------------------------
-   Helpers
-   -------------------------------------------------------------------------- */
 
 function showOnly(el) {
   [quizIntro, quizBody, quizResults].forEach(function (panel) {
@@ -172,10 +161,6 @@ function messageForScore(pct) {
   return 'Keep studying — try the flashcards and give it another go!';
 }
 
-/* --------------------------------------------------------------------------
-   Render a question
-   -------------------------------------------------------------------------- */
-
 function renderQuestion(index) {
   const q = quizData[index];
 
@@ -196,10 +181,6 @@ function renderQuestion(index) {
     answerOptions.appendChild(btn);
   });
 }
-
-/* --------------------------------------------------------------------------
-   Handle an answer selection
-   -------------------------------------------------------------------------- */
 
 function handleAnswer(selectedIndex, correctIndex) {
   const buttons = answerOptions.querySelectorAll('.answer-option');
@@ -227,10 +208,6 @@ function handleAnswer(selectedIndex, correctIndex) {
     }
   }, AUTO_ADVANCE_MS);
 }
-
-/* --------------------------------------------------------------------------
-   Show the results screen
-   -------------------------------------------------------------------------- */
 
 function showResults() {
   const total = quizData.length;
@@ -283,10 +260,6 @@ function showResults() {
   }
 }
 
-/* --------------------------------------------------------------------------
-   Start / Restart the quiz
-   -------------------------------------------------------------------------- */
-
 function startQuiz() {
   currentQuestion = 0;
   score = 0;
@@ -294,10 +267,6 @@ function startQuiz() {
   renderQuestion(0);
   showOnly(quizBody);
 }
-
-/* --------------------------------------------------------------------------
-   Populate the intro screen with the stored best score on page load
-   -------------------------------------------------------------------------- */
 
 (function populateLastScore() {
   const saved = localStorage.getItem('quizBestScore');
@@ -307,9 +276,6 @@ function startQuiz() {
   }
 })();
 
-/* --------------------------------------------------------------------------
-   Event listeners
-   -------------------------------------------------------------------------- */
 
 startBtn.addEventListener('click', startQuiz);
 retryBtn.addEventListener('click', startQuiz);
